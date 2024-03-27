@@ -12,12 +12,14 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <vector>
+
 namespace LinearAlgebra {
 
 class Vector {
   private:
     int length;
-    float *arr;   // underlying data type really is just a float 
+    std::vector<float> data;   // underlying data type really is just a float 
   public:
     Vector();
     Vector(std::size_t size);
