@@ -4,6 +4,7 @@
  */
 
 #include "matrix.h"
+#include <stdexcept>
 
 
 Matrix::Matrix(): rows(2), cols(2), data(2, std::vector<int>(2, 0))
@@ -50,3 +51,23 @@ Matrix operator*(int scalar, const Matrix& mat)
     return result;
 }
 
+Matrix operator*(const Matrix& lhs, const Matrix& rhs)
+{
+    if (lhs.cols != rhs.rows) {
+        std::cerr << "Dimensions of matrix don't match" << std::endl;
+        throw std::invalid_argument("Columns of left matrix must match rows of right matrix");
+    }
+
+    // Initializing matrix
+    Matrix result(lhs.cols, rhs.rows);
+
+
+    for (int r = 0; r < lhs.rows; ++r) {
+        for (int k = 0; k < rhs.cols; ++k) {
+            for (int c = 0; c < lhs.cols; ++c)
+                result.data[r][k] += lhs.data[r][c] * rhs.data[c][k];
+        }
+    }
+
+    return result;
+}
