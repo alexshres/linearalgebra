@@ -5,6 +5,7 @@
 
 int main()
 {
+    /*
     Matrix test_default;
 
     std::cout << "Testing default constructor with test_default:\n" << test_default << std::endl;
@@ -39,6 +40,12 @@ int main()
         std::cerr << e.what() << std::endl;
         return 1;
     }
+    */
+
+    Matrix inv_mat(2, 2, 1);
+    Matrix sc = inv_mat.inverse();
+
+    std::cout << "inverted of 2x2 is \n" << sc << std::endl;
 
     return 0;
 }

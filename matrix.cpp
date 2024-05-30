@@ -71,3 +71,26 @@ Matrix operator*(const Matrix& lhs, const Matrix& rhs)
 
     return result;
 }
+
+Matrix Matrix::inverse() const
+{
+
+    if (rows != cols) {
+        throw std::invalid_argument("Matrix must be a square matrix.\n");
+    }
+    // create new matrix with identity augmented to it
+
+    Matrix scratch(rows, 2*cols);
+
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j)
+            scratch.data[i][j] = data[i][j];
+    }
+
+    // Add diagonal 1's to create the identity augment
+    for (int i = 0; i < rows; ++i) {
+        scratch.data[i][i+rows] = 1;
+    }
+
+    return scratch;
+}

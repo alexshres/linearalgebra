@@ -15,6 +15,8 @@ class Matrix {
 
         std::vector<std::vector<int>> data;
 
+
+
     public:
         // Default constructor - will create an emptry 2x2 matrix filled w/ 0's
         Matrix();           
@@ -24,6 +26,9 @@ class Matrix {
         
         // Initialize a matrix with r rows and c columns all to n's
         Matrix(int r, int c, int n);
+        
+        // Returns inverse of matrix if it exists
+        Matrix inverse() const;
 
         // Display operator
         friend std::ostream& operator<<(std::ostream& os, const Matrix& mat);
