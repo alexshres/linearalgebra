@@ -1,6 +1,7 @@
 // Main file to currently test Matrix class functions
 
 #include "matrix.h"
+#include <stdexcept>
 
 int main()
 {
@@ -28,9 +29,16 @@ int main()
               << scalar_mult << std::endl;
 
     Matrix mat_mul(4, 3, 1);
-    Matrix mat_mul_result = scalar_mult * mat_mul; 
-    std::cout << "Testing matrix mul with matrices:\n" 
-              << mat_mul_result << std::endl;
+
+    try {
+        Matrix mat_mul_result = scalar_mult * mat_mul; 
+        std::cout << "Testing matrix mul with matrices:\n" 
+                  << mat_mul_result << std::endl;
+    }
+    catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
 
     return 0;
 }

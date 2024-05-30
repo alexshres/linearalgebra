@@ -59,13 +59,13 @@ Matrix operator*(const Matrix& lhs, const Matrix& rhs)
     }
 
     // Initializing matrix
-    Matrix result(lhs.cols, rhs.rows);
+    Matrix result(lhs.rows, rhs.cols);
 
 
     for (int r = 0; r < lhs.rows; ++r) {
-        for (int k = 0; k < rhs.cols; ++k) {
-            for (int c = 0; c < lhs.cols; ++c)
-                result.data[r][k] += lhs.data[r][c] * rhs.data[c][k];
+        for (int c = 0; c < rhs.cols; ++c) {
+            for (int k = 0; k < lhs.cols; ++k)
+                result.data[r][c] += lhs.data[r][k] * rhs.data[k][c];
         }
     }
 

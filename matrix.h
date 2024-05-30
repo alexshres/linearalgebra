@@ -31,6 +31,8 @@ class Matrix {
         // Scalar multiplication
         friend Matrix operator*(const Matrix& mat, int scalar);
         friend Matrix operator*(int scalar, const Matrix& mat);
+
+        // Matrix-matrix multiplication
         friend Matrix operator*(const Matrix& lhs, const Matrix& rhs);
 
 };
