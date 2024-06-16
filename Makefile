@@ -22,3 +22,14 @@ $(PROG): $(OBJS)
 
 clean:
 	rm *.o $(PROG)
+
+
+ga:
+	git add .
+
+gc:
+	@read -p "Enter commit messages: " msg; \
+		git commit -m "$$msg"
+
+gp: ga gc
+	git push
