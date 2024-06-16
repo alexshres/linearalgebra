@@ -26,14 +26,6 @@ class Matrix {
         // Initialize a matrix with r rows and c columns all to n's
         Matrix(int r, int c, int n);
         
-        // Scalar multiplication
-        friend Matrix operator*(const Matrix& mat, int scalar);
-        friend Matrix operator*(int scalar, const Matrix& mat);
-
-        // Matrix-matrix multiplication
-        friend Matrix operator*(const Matrix& lhs, const Matrix& rhs);
-
-
         /*
          *
          * MATRIX OPERATIONS
@@ -41,31 +33,36 @@ class Matrix {
          *      * LU Decomposition
          *      * Echelon Form
          *      * Row-Reduced Echelon Form
-         *      * Transpose
-         *      * Rank
          */
 
         // TODO
+        // Returns inverse of matrix if it exists
         Matrix inverse() const;
         Matrix lower_decomp() const;
         Matrix upper_decomp() const;
         Matrix echelon_form() const;
         Matrix rref() const;
-        Matrix transpose() const;
-
-        int rank() const;
         
         bool isSymmetric() const;
         bool isSquare() const;
+        bool isInvertible() const;
 
-        // Returns a vector of length 2 with the rows in the 0th index 
-        // and columns in the 1st index
         std::vector<int> getDimensions() const;
+
+
+        // Scalar multiplication
+        friend Matrix operator*(const Matrix& mat, int scalar);
+        friend Matrix operator*(int scalar, const Matrix& mat);
+
+        // Matrix-matrix multiplication
+        friend Matrix operator*(const Matrix& lhs, const Matrix& rhs);
 
         /*
             DISPLAY
         */
         // Display operator
         friend std::ostream& operator<<(std::ostream& os, const Matrix& mat);
+
+
 
 };

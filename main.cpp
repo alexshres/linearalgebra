@@ -47,5 +47,12 @@ int main()
 
     std::cout << "inverted of 2x2 is \n" << sc << std::endl;
 
+    std::vector<int> dimensions(2);
+
+    dimensions = sc.getDimensions();
+
+    std::cout << "Number of rows: " << dimensions[0] << "\nNumber of cols: " 
+              << dimensions[1] << std::endl;
+
     return 0;
 }

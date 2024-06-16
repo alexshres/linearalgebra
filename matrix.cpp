@@ -8,28 +8,17 @@
 
 
 Matrix::Matrix(): rows(2), cols(2), data(2, std::vector<int>(2, 0))
-{
-}
+{}
+
 
 Matrix::Matrix(int r, int c): rows(r), cols(c), data(r, std::vector<int>(c, 0))
-{
-}
+{}
+
 
 Matrix::Matrix(int r, int c, int n): rows(r), cols(c), data(r, std::vector<int>(c, n))
-{
-}
+{}
 
 
-std::ostream& operator<<(std::ostream& os, const Matrix& mat) {
-    
-    for (int r = 0; r < mat.rows; ++r) {
-        for (int c = 0; c < mat.cols; ++c) 
-            os << mat.data[r][c] << " ";
-        os << "\n";
-    }
-
-    return os;
-}
 
 Matrix operator*(const Matrix& mat, int scalar)
 {
@@ -72,6 +61,7 @@ Matrix operator*(const Matrix& lhs, const Matrix& rhs)
     return result;
 }
 
+// TODO
 Matrix Matrix::inverse() const
 {
 
@@ -93,4 +83,25 @@ Matrix Matrix::inverse() const
     }
 
     return scratch;
+}
+
+std::vector<int> Matrix::getDimensions() const
+{
+    std::vector<int> result(2);
+
+    result[0] = rows;
+    result[1] = cols;
+
+    return result;
+}
+
+
+std::ostream& operator<<(std::ostream& os, const Matrix& mat) {
+    for (int r = 0; r < mat.rows; ++r) {
+        for (int c = 0; c < mat.cols; ++c) 
+            os << mat.data[r][c] << " ";
+        os << "\n";
+    }
+
+    return os;
 }
